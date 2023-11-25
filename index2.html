@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+prime no 1:<input value="53" id="p"><br><br>
+prime no 1:<input value="59" id="q"><br><br>
+msg:<input value="89" id="msg"><br><br>
+n=<p id="n"></p><br>
+e=<p id="e"></p><br>
+d=<p id="d"></p><br>
+ct=<p id="ct"></p><br>
+<button onclick="rsa()">apply rsa</button>
+</body>
+<script type="text/javascript">
+function rsa(){
+var p,q,n,t,i,e,x,ct,ctt,d,m;
+gcd=function(a,b){return (!b)?a:gcd(b,a%b)}
+p=document.getElementById("p").value;
+q=document.getElementById("q").value;
+m=document.getElementById("msg").value;
+n=p*q;
+t=(p-1)*(q-1);
+for(e=2;e<t;e++){
+if(gcd(e,t)==1){break;}
+}
+for(i=0;i<10;i++){
+x=1+i*t;
+if(x%e==0){d=x/e; break;}
+}
+ct=Math.pow(m,e);
+ctt=ct%n;
+document.getElementById("n").innerHTML=n;
+
+document.getElementById("e").innerHTML=e;
+document.getElementById("d").innerHTML=d;
+document.getElementById("ct").innerHTML=ctt;
+
+
+}
+
+</script>
+</html>
